@@ -9,17 +9,37 @@ class Equipment:
 
     @property
     def name(self):
-        if isinstance(self._name, str) and len(self._name) > 0:
-            return self._name
+        return self._name
+
+    @name.setter
+    def name(self, value):
+        if isinstance(value, str) and len(value.strip()) > 0:
+            self._name = value
         else:
             raise ValueError("Equipment name must be a non-empty string.")
 
     @property
     def type(self):
-        if isinstance(self._type, str) and len(self._type) > 0:
-            return self._type
+        return self._type
+
+    @type.setter
+    def type(self, value):
+        if isinstance(value, str) and len(value.strip()) > 0:
+            self._type = value
         else:
             raise ValueError("Equipment type must be a non-empty string.")
+
+    @property
+    def mission(self):
+        return self._mission
+
+    @mission.setter
+    def mission(self, value):
+        from lib.models.mission import Mission
+        if isinstance(value, Mission):
+            self._mission = value
+        else:
+            raise ValueError("mission must be an instance of Mission class.")
 
     @classmethod
     def find_by_id(cls, id):
