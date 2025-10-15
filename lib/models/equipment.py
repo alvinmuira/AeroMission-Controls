@@ -56,7 +56,8 @@ class Equipment:
             from lib.models.mission import Mission
             mission = Mission.find_by_id(row[3])
             if not mission:
-                raise ValueError("Mission with given ID does not exist.")
+                print(f"⚠ Warning: Mission with ID {row[3]} not found for equipment '{row[1]}'. Skipping this record.")
+                return None
             return cls(name=row[1], type=row[2], Mission=mission, id=row[0])
         return None
 
