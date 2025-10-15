@@ -24,9 +24,9 @@ class Mission():
 
     @status.setter
     def status(self, value):
-        types = ["Pending", "In Progress", "Completed", "Cancelled"]
+        types = ["Pending", "Ongoing", "Completed", "Cancelled"]
         if value in types:
-            self._status = value
+            self._status = value.strip()
         else:
             raise ValueError(f"Status must be one of: {', '.join(types)}")
 
@@ -36,10 +36,15 @@ class Mission():
 
     @launch_date.setter
     def launch_date(self, value):
-        if isinstance(value, str) and len(value) > 0:
-            self._launch_date = value.strip()
-        else:
-            raise ValueError("Launch date must be a non-empty string.")
+        if not isinstance(value, str) or len(value.strip()) == 0:
+            raise ValueError("Launch date must be a non-empty string in 'YYYY-MM-DD' format.")
+        try:
+            from datetime import datetime
+            datetime.strptime(value, "%Y-%m-%d")
+            self._launch_date = value
+        except ValueError:
+            raise ValueError("Launch date must be in 'YYYY-MM-DD' format. eg: '2023-10-15'")
+            
 
     @classmethod
     def find_by_id(cls, id):

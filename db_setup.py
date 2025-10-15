@@ -16,7 +16,7 @@ def setup_database():
         CREATE TABLE IF NOT EXISTS missions (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             name TEXT,
-            status TEXT,
+            status TEXT CHECK(status IN ('Pending', 'Ongoing', 'Completed', 'Cancelled')),
             launch_date TEXT
         );
     """)
