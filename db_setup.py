@@ -15,18 +15,18 @@ def setup_database():
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS missions (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            name TEXT,
-            status TEXT CHECK(status IN ('Pending', 'Ongoing', 'Completed', 'Cancelled')),
-            launch_date TEXT
+            name TEXT NOT NULL,
+            status TEXT CHECK(status IN ('Pending', 'Ongoing', 'Completed', 'Cancelled')) NOT NULL,
+            launch_date TEXT NOT NULL
         );
     """)
 
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS engineer (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            name TEXT,
-            specialization TEXT,
-            mission_id INTEGER,
+            name TEXT NOT NULL,
+            specialization TEXT NOT NULL,
+            mission_id INTEGER NOT NULL,
             FOREIGN KEY (mission_id) REFERENCES missions(id)
         );
     """)
@@ -34,9 +34,9 @@ def setup_database():
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS equipment (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            name TEXT,
-            type TEXT,
-            mission_id INTEGER,
+            name TEXT NOT NULL,
+            type TEXT NOT NULL,
+            mission_id INTEGER NOT NULL,
             FOREIGN KEY (mission_id) REFERENCES missions(id)
         );
     """)
