@@ -2,29 +2,42 @@ from db_setup import get_connection
 
 class Mission():
     def __init__(self, name, status, launch_date, id = None):
-        self._name = name
-        self._status = status
-        self._launch_date = launch_date
+        self.name = name
+        self.status = status
+        self.launch_date = launch_date
         self.id = id
 
     @property
     def name(self):
-        if isinstance(self._name, str) and len(self._name) > 0:
-            return self._name
+        return self._name
+
+    @name.setter
+    def name(self, value):
+        if isinstance(value, str) and len(value) > 0:
+            self._name = value.strip()
         else:
             raise ValueError("Mission name must be a non-empty string.")
         
     @property
     def status(self):
-        if self._status in ["Pending", "Ongoing", "Completed", "Aborted"]:
-            return self._status
+        return self._status
+
+    @status.setter
+    def status(self, value):
+        types = ["Pending", "In Progress", "Completed", "Cancelled"]
+        if value in types:
+            self._status = value
         else:
-            raise ValueError("Status must be one of: Pending, Ongoing, Completed, Aborted.")
+            raise ValueError(f"Status must be one of: {', '.join(types)}")
 
     @property
     def launch_date(self):
-        if isinstance(self._launch_date, str) and len(self._launch_date) > 0:
-            return self._launch_date
+        return self._launch_date
+
+    @launch_date.setter
+    def launch_date(self, value):
+        if isinstance(value, str) and len(value) > 0:
+            self._launch_date = value.strip()
         else:
             raise ValueError("Launch date must be a non-empty string.")
 
