@@ -13,8 +13,8 @@ class Mission():
 
     @name.setter
     def name(self, value):
-        if isinstance(value, str) and len(value) > 0:
-            self._name = value.strip()
+        if isinstance(value, str) and len(value.strip()) > 0:
+            self._name = value
         else:
             raise ValueError("Mission name must be a non-empty string.")
         
@@ -156,3 +156,14 @@ class Mission():
         assignment = EngineerMission(Engineer=engineer, Mission=self, role=role)
         assignment.save()
         return assignment
+
+    @classmethod
+    def find_mission_by_name(cls, name):
+        if not isinstance(name, str) or len(name.strip()) == 0:
+            raise ValueError("Mission name must be a non-empty string.")
+        connection = get_connection()
+        cursor = connection.cursor()
+        cursor.execute("SELECT * FROM missions WHERE name = ?", (name,))
+        row = cursor.fetchone()
+        connection.close()
+        return cls.new_from_db_row(row)
