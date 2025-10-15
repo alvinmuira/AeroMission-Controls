@@ -33,7 +33,11 @@ class Equipment:
     @classmethod
     def new_from_db_row(cls, row):
         if row:
-            return cls(name=row[1], type=row[2], Mission=row[3], id=row[0])
+            from lib.models.mission import Mission
+            mission = Mission.find_by_id(row[3])
+            if not mission:
+                raise ValueError("Mission with given ID does not exist.")
+            return cls(name=row[1], type=row[2], Mission=mission, id=row[0])
         return None
 
     def save(self):
