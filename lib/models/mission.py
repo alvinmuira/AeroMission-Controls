@@ -146,3 +146,13 @@ class Mission():
         connection.close()
         missions = [cls.new_from_db_row(row) for row in rows]
         return missions
+
+    def assign_an_engineer(self, engineer, role):
+        from lib.models.engineer_mission import EngineerMission
+        if not self.id:
+            raise ValueError("Mission must be saved to the database before assignment.")
+        if not engineer.id:
+            raise ValueError("Engineer must be saved to the database before assignment.")
+        assignment = EngineerMission(Engineer=engineer, Mission=self, role=role)
+        assignment.save()
+        return assignment
