@@ -88,3 +88,12 @@ class Engineer:
             self.id = None
         else:
             raise ValueError("Cannot delete an unsaved Engineer instance.")
+
+    @classmethod
+    def get_all_engineers(cls):
+        connection = get_connection()
+        cursor = connection.cursor()
+        cursor.execute("SELECT * FROM engineer")
+        rows = cursor.fetchall()
+        connection.close()
+        return [cls.new_from_db_row(row) for row in rows]
