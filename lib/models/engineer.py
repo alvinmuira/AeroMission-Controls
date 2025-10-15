@@ -2,24 +2,44 @@ from db_setup import get_connection
 
 class Engineer:
     def __init__(self, name, specialization, Mission, id = None):
-        self._name = name
-        self._specialization = specialization
-        self._mission = Mission
+        self.name = name
+        self.specialization = specialization
+        self.mission = Mission
         self.id = id
 
     @property
     def name(self):
-        if isinstance(self._name, str) and len(self._name) > 0:
-            return self._name
+        return self._name
+
+    @name.setter
+    def name(self, value):
+        if isinstance(value, str) and len(value) > 0:
+            self._name = value
         else:
-            raise ValueError("Engineer name must be a non-empty string.")
+            raise ValueError("Name must be a non-empty string.")
 
     @property
     def specialization(self):
-        if isinstance(self._specialization, str) and len(self._specialization) > 0:
-            return self._specialization
+        return self._specialization
+
+    @specialization.setter
+    def specialization(self, value):
+        if isinstance(value, str) and len(value) > 0:
+            self._specialization = value
         else:
             raise ValueError("Specialization must be a non-empty string.")
+
+    @property
+    def mission(self):
+        return self._mission
+
+    @mission.setter
+    def mission(self, value):
+        from lib.models.mission import Mission
+        if isinstance(value, Mission):
+            self._mission = value
+        else:
+            raise ValueError("mission must be an instance of Mission class.")
 
     @classmethod
     def find_by_id(cls, id):
