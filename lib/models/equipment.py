@@ -88,3 +88,12 @@ class Equipment:
             self.id = None  # Clear the id after deletion
         else:
             raise ValueError("Cannot delete an unsaved Equipment instance.")
+
+    @classmethod
+    def get_all_equipment(cls):
+        connection = get_connection()
+        cursor = connection.cursor()
+        cursor.execute("SELECT * FROM equipment")
+        rows = cursor.fetchall()
+        connection.close()
+        return [cls.new_from_db_row(row) for row in rows if row]
