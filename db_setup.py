@@ -26,6 +26,16 @@ def setup_database():
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             name TEXT NOT NULL,
             specialization TEXT NOT NULL
+        );
+    """)
+
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS engineer_mission (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            engineer_id INTEGER NOT NULL,
+            mission_id INTEGER NOT NULL,
+            role TEXT NOT NULL,
+            FOREIGN KEY (engineer_id) REFERENCES engineer(id),
             FOREIGN KEY (mission_id) REFERENCES missions(id)
         );
     """)
