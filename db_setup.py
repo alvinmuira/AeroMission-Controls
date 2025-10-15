@@ -35,8 +35,8 @@ def setup_database():
             engineer_id INTEGER NOT NULL,
             mission_id INTEGER NOT NULL,
             role TEXT NOT NULL,
-            FOREIGN KEY (engineer_id) REFERENCES engineer(id),
-            FOREIGN KEY (mission_id) REFERENCES missions(id)
+            FOREIGN KEY (engineer_id) REFERENCES engineer(id) ON DELETE CASCADE,
+            FOREIGN KEY (mission_id) REFERENCES missions(id) ON DELETE CASCADE
         );
     """)
 
