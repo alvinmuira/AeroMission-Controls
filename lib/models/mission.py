@@ -90,22 +90,7 @@ class Mission():
         self.id = None  # Clear the id after deletion
     
     def view_mission_engineers(self):
-        connection = get_connection()
-        cursor = connection.cursor()
-        cursor.execute("""
-            SELECT
-                name,
-                specialization
-            FROM engineer
-            WHERE mission_id = ?
-        """, (self.id,))
-        results = cursor.fetchall()
-        connection.close()
-        if results:
-            for result in results:
-                print(f"Engineer \"{result[0]}\" , who specializes in \"{result[1]}\" will be participating in mission \"{self.name}\".")
-        else:
-            print(f"The \"{self.name}\" mission has no assigned engineers.")
+        pass
 
     def view_mission_equipment(self):
         connection = get_connection()
