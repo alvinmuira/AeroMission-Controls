@@ -124,3 +124,23 @@ class Mission():
                 print(f"The \"{result[0]}\" equipment of type \"{result[1]}\", will be used in mission \"{self.name}\".")
         else:
             print(f"The \"{self.name}\" mission has no assigned equipment.")
+
+    @classmethod
+    def get_missions_with_status(cls, status):
+        connection = get_connection()
+        cursor = connection.cursor()
+        cursor.execute("SELECT * FROM missions WHERE status = ?", (status,))
+        rows = cursor.fetchall()
+        connection.close()
+        missions = [cls.new_from_db_row(row) for row in rows]
+        return missions
+
+    @classmethod
+    def get_all_missions(cls):
+        connection = get_connection()
+        cursor = connection.cursor()
+        cursor.execute("SELECT * FROM missions")
+        rows = cursor.fetchall()
+        connection.close()
+        missions = [cls.new_from_db_row(row) for row in rows]
+        return missions
