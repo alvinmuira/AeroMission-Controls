@@ -13,7 +13,7 @@ class Engineer:
 
     @name.setter
     def name(self, value):
-        if isinstance(value, str) and len(value) > 0:
+        if isinstance(value, str) and len(value.strip()) > 0:
             self._name = value
         else:
             raise ValueError("Name must be a non-empty string.")
@@ -24,7 +24,7 @@ class Engineer:
 
     @specialization.setter
     def specialization(self, value):
-        if isinstance(value, str) and len(value) > 0:
+        if isinstance(value, str) and len(value.strip()) > 0:
             self._specialization = value
         else:
             raise ValueError("Specialization must be a non-empty string.")
