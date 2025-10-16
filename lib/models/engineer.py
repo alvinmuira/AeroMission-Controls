@@ -88,3 +88,9 @@ class Engineer:
         assignment = EngineerMission(engineer=self, mission=mission, role=role)
         assignment.save()
         return assignment
+
+    @classmethod
+    def create(cls, name, specialization):
+        engineer = cls(name=name, specialization=specialization)
+        engineer.save()
+        return engineer

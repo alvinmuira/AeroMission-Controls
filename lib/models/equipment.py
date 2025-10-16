@@ -98,3 +98,10 @@ class Equipment:
         rows = cursor.fetchall()
         connection.close()
         return [cls.new_from_db_row(row) for row in rows if row]
+
+    @classmethod
+    def create(cls, name, type, mission):
+        if isinstance(mission, Mission):
+            return cls(name=name, type=type, Mission=mission)
+        else:
+            raise ValueError("mission must be an instance of Mission class.")

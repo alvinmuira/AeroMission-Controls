@@ -167,3 +167,16 @@ class Mission():
         row = cursor.fetchone()
         connection.close()
         return cls.new_from_db_row(row)
+
+    @classmethod
+    def create(cls, name, status, launch_date):
+        if not isinstance(name, str) or len(name.strip()) == 0:
+            raise ValueError("Mission name must be a non-empty string.")
+        if status not in ['Pending', 'Ongoing', 'Completed', 'Cancelled']:
+            raise ValueError("Invalid mission status.")
+        if not isinstance(launch_date, str) or len(launch_date.strip()) == 0:
+            raise ValueError("Launch date must be a non-empty string.")
+
+        mission = cls(name=name, status=status, launch_date=launch_date)
+        mission.save()
+        return mission
