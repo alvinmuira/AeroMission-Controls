@@ -86,7 +86,7 @@ class Equipment:
             cursor.execute("DELETE FROM equipment WHERE id = ?", (self.id,))
             connection.commit()
             connection.close()
-            self.id = None  # Clear the id after deletion
+            self.id = None  
         else:
             raise ValueError("Cannot delete an unsaved Equipment instance.")
 
@@ -103,6 +103,17 @@ class Equipment:
     def create(cls, name, type, mission):
         from lib.models.mission import Mission
         if isinstance(mission, Mission):
-            return cls(name=name, type=type, Mission=mission)
+            equipment = cls(name=name, type=type, Mission=mission)
+            equipment.save()
+            return equipment
         else:
             raise ValueError("mission must be an instance of Mission class.")
+
+    @classmethod
+    def find_equipment_by_name(cls, name):
+        connection = get_connection()
+        cursor = connection.cursor()
+        cursor.execute("SELECT * FROM equipment WHERE name = ?", (name,))
+        row = cursor.fetchone()
+        connection.close()
+        return cls.new_from_db_row(row)

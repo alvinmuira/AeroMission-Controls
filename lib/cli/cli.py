@@ -25,9 +25,25 @@ def create():
             create_helper.equipment()
             break
 
-@cli.group()
+@cli.command()
 def delete():
-    pass
+    click.echo("Delete records:")
+    click.echo("    1. Mission")
+    click.echo("    2. Engineer")
+    click.echo("    3. Equipment")
+    
+    while True:
+        choice = click.prompt("Enter your choice").strip().lower()
+        from lib.cli.cli_helpers import delete_helper
+        if choice == "1" or choice == "mission":
+            delete_helper.mission()
+            break
+        elif choice == "2" or choice == "engineer":
+            delete_helper.engineer()
+            break
+        elif choice == "3" or choice == "equipment":
+            delete_helper.equipment()
+            break
 
 @cli.group()
 def update():

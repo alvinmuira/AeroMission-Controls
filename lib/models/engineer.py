@@ -94,3 +94,12 @@ class Engineer:
         engineer = cls(name=name, specialization=specialization)
         engineer.save()
         return engineer
+
+    @classmethod
+    def find_engineer_by_name(cls, name):
+        connection = get_connection()
+        cursor = connection.cursor()
+        cursor.execute("SELECT * FROM engineer WHERE name = ?", (name,))
+        row = cursor.fetchone()
+        connection.close()
+        return cls.new_from_db_row(row)
