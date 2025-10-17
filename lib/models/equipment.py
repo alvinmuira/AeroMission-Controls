@@ -117,3 +117,21 @@ class Equipment:
         row = cursor.fetchone()
         connection.close()
         return cls.new_from_db_row(row)
+
+    @classmethod
+    def update(cls, id, name=None, type=None, mission=None):
+        equipment = cls.find_by_id(id)
+        if not equipment:
+            raise ValueError(f"Equipment with id {id} does not exist.")
+        if name is not None:
+            equipment.name = name
+        if type is not None:
+            equipment.type = type
+        if mission is not None:
+            from lib.models.mission import Mission
+            if isinstance(mission, Mission):
+                equipment.mission = mission
+            else:
+                raise ValueError("mission must be an instance of Mission class.")
+        equipment.save()
+        return equipment

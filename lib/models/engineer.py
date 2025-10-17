@@ -103,3 +103,15 @@ class Engineer:
         row = cursor.fetchone()
         connection.close()
         return cls.new_from_db_row(row)
+
+    @classmethod
+    def update(cls, id, name=None, specialization=None):
+        engineer = cls.find_by_id(id)
+        if not engineer:
+            raise ValueError("Engineer with given ID does not exist.")
+        if name is not None:
+            engineer.name = name
+        if specialization is not None:
+            engineer.specialization = specialization
+        engineer.save()
+        return engineer
