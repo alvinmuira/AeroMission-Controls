@@ -20,9 +20,9 @@ def engineer_to_mission():
     role = click.prompt("\nEnter engineer's role in the mission", type=str)
     try:
         mission.assign_an_engineer(engineer, role)
-        click.echo(f"       ✅  Assignment of Eng.{engineer.name} to {mission.name} mission as {role} was successful!")
+        click.echo(click.style(f"       ✅  Assignment of Eng.{engineer.name} to {mission.name} mission as {role} was successful!", fg="green"))
     except ValueError as ve:
-        click.echo(f"       ❌ Error: {ve}")
+        click.echo(click.style(f"       ❌ Error: {ve}", fg="red"))
 
 def equipment_to_mission():
     from lib.models.mission import Mission
@@ -38,6 +38,6 @@ def equipment_to_mission():
     type_ = click.prompt("\nEnter equipment type", type=str)
     try:
         equipment = Equipment.create(name=name, type=type_, mission=mission)
-        click.echo(f"       ✅  Creation of {equipment.name} for mission {equipment.mission.name} was successful!")
+        click.echo(click.style(f"       ✅  Creation of {equipment.name} for mission {equipment.mission.name} was successful!", fg="green"))
     except ValueError as ve:
-        click.echo(f"       ❌ Error: {ve}")
+        click.echo(click.style(f"       ❌ Error: {ve}", fg="red"))

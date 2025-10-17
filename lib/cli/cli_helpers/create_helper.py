@@ -7,9 +7,9 @@ def mission():
     launch_date = click.prompt("\nEnter mission launch date (YYYY-MM-DD)", type=str)
     try:
         mission = Mission.create(name=name, status=status, launch_date=launch_date)
-        click.echo(f"       ✅  Creation of {mission.name} mission was successful!")
+        click.echo(click.style(f"       ✅  Creation of {mission.name} mission was successful!", fg="green"))
     except ValueError as ve:
-        click.echo(f"       ❌ Error: {ve}")
+        click.echo(click.style(f"       ❌ Error: {ve}", fg="red"))
 
 def engineer():
     from lib.models.engineer import Engineer
@@ -17,9 +17,9 @@ def engineer():
     specialization = click.prompt("\nEnter engineer's specialization", type=str)
     try:
         engineer = Engineer.create(name=name, specialization=specialization)
-        click.echo(f"       ✅  Creation of Eng.{engineer.name} was successful!")
+        click.echo(click.style(f"       ✅  Creation of Eng.{engineer.name} was successful!", fg="green"))
     except ValueError as ve:
-        click.echo(f"       ❌ Error: {ve}")
+        click.echo(click.style(f"       ❌ Error: {ve}", fg="red"))
 
 def equipment():
     from lib.models.equipment import Equipment
@@ -32,6 +32,6 @@ def equipment():
         if not mission:
             raise ValueError(f"Mission with name {mission} does not exist.")
         equipment = Equipment.create(name=name, type=type_, mission=mission)
-        click.echo(f"       ✅  Creation of {equipment.name} for mission {equipment.mission.name} was successful!")
+        click.echo(click.style(f"       ✅  Creation of {equipment.name} for mission {equipment.mission.name} was successful!", fg="green"))
     except ValueError as ve:
-        click.echo(f"       ❌ Error: {ve}")
+        click.echo(click.style(f"       ❌ Error: {ve}", fg="red"))

@@ -9,9 +9,9 @@ def mission():
         mission = Mission.find_mission_by_name(value)
     try:
         mission.delete()
-        click.echo(f"       ✅  Deletion of '{mission.name}' mission was successful!")
+        click.echo(click.style(f"       ✅  Deletion of '{mission.name}' mission was successful!", fg="green"))
     except ValueError as ve:
-        click.echo(f"       ❌ Error: {ve}")
+        click.echo(click.style(f"       ❌ Error: {ve}", fg="red"))
 
 def engineer():
     from lib.models.engineer import Engineer
@@ -22,9 +22,9 @@ def engineer():
         engineer = Engineer.find_engineer_by_name(value)
     try:
         engineer.delete()
-        click.echo(f"       ✅  Deletion of engineer 'Eng.{engineer.name}' was successful!")
+        click.echo(click.style(f"       ✅  Deletion of engineer 'Eng.{engineer.name}' was successful!", fg="green"))
     except ValueError as ve:
-        click.echo(f"       ❌ Error: {ve}")
+        click.echo(click.style(f"       ❌ Error: {ve}", fg="red"))
 
 def equipment():
     from lib.models.equipment import Equipment
@@ -37,6 +37,6 @@ def equipment():
         raise ValueError(f"Equipment with name {value} does not exist.")
     try:
         equipment.delete()
-        click.echo(f"       ✅  Deletion of equipment '{equipment.name}' was successful!")
+        click.echo(click.style(f"       ✅  Deletion of equipment '{equipment.name}' was successful!", fg="green"))
     except ValueError as ve:
-        click.echo(f"       ❌ Error: {ve}")
+        click.echo(click.style(f"       ❌ Error: {ve}", fg="red"))

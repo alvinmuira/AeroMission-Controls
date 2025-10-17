@@ -18,9 +18,9 @@ def engineer():
     try:
         if not engineer:
             raise ValueError(f"Engineer with name {value} does not exist.")
-        click.echo(f"\n       =>Engineer details:\n ID: {engineer.id},\n Name: Eng.{engineer.name},\n Specialization: {engineer.specialization}\n")
+        click.echo(click.style(f"\n       =>Engineer details:\n ID: {engineer.id},\n Name: Eng.{engineer.name},\n Specialization: {engineer.specialization}\n", fg="cyan"))
     except ValueError as ve:
-        click.echo(f"       ❌ Error: {ve}")
+        click.echo(click.style(f"       ❌ Error: {ve}", fg="red"))
 
 def equipment():
     from lib.models.equipment import Equipment
@@ -32,9 +32,9 @@ def equipment():
     try:
         if not equipment:
             raise ValueError(f"Equipment with name {value} does not exist.")
-        click.echo(f"\n       =>Equipment details:\n ID: {equipment.id},\n Name: {equipment.name},\n Type: {equipment.type},\n Mission: {equipment.mission.name}\n")
+        click.echo(click.style(f"\n       =>Equipment details:\n ID: {equipment.id},\n Name: {equipment.name},\n Type: {equipment.type},\n Mission: {equipment.mission.name}\n", fg="cyan"))
     except ValueError as ve:
-        click.echo(f"       ❌ Error: {ve}")
+        click.echo(click.style(f"       ❌ Error: {ve}", fg="red"))
 
 def _search_specific_mission():
     from lib.models.mission import Mission
@@ -46,9 +46,9 @@ def _search_specific_mission():
     try:
         if not mission:
             raise ValueError(f"Mission with name {value} does not exist.")
-        click.echo(f"\n       =>Mission details:\n ID: {mission.id},\n Name: {mission.name},\n Status: {mission.status},\n Launch Date: {mission.launch_date}\n")
+        click.echo(click.style(f"\n       =>Mission details:\n ID: {mission.id},\n Name: {mission.name},\n Status: {mission.status},\n Launch Date: {mission.launch_date}\n", fg="cyan"))
     except ValueError as ve:
-        click.echo(f"       ❌ Error: {ve}")
+        click.echo(click.style(f"       ❌ Error: {ve}", fg="red"))
 
 def _search_by_status():
     from lib.models.mission import Mission
@@ -57,9 +57,9 @@ def _search_by_status():
         missions = Mission.get_missions_with_status(status)
         if not missions:
             raise ValueError(f"No missions found with status {status}.")
-        click.echo(f"\n       =>Missions with status '{status}':\n")
+        click.echo(click.style(f"\n       =>Missions with status '{status}':\n", fg="cyan"))
         headers = ["ID", "Name", "Launch Date"]
         table = [ [mission.id, mission.name, mission.launch_date] for mission in missions ]
         click.echo(tabulate(table, headers=headers, tablefmt="fancy_grid"))
     except ValueError as ve:
-        click.echo(f"       ❌ Error: {ve}")
+        click.echo(click.style(f"       ❌ Error: {ve}", fg="red"))

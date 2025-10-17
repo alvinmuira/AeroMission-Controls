@@ -12,7 +12,7 @@ def equipment():
         if not mission:
             raise ValueError(f"No equipment found on the {value} mission.")
     except ValueError as ve:
-        click.echo(f"       ❌ Error: {ve}")
+        click.echo(click.style(f"       ❌ Error: {ve}", fg="red"))
         return
 
 def engineers():
@@ -27,5 +27,5 @@ def engineers():
         if not mission:
             raise ValueError(f"No engineers found on the {value} mission.")
     except ValueError as ve:
-        click.echo(f"       ❌ Error: {ve}")
+        click.echo(click.style(f"       ❌ Error: {ve}", fg="red"))
         return

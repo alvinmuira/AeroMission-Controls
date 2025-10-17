@@ -9,12 +9,12 @@ back_choices = ["back", "return", "exit", "quit", "main menu", "menu"]
 
 @cli.command()
 def create():
-    click.echo("\nCreate new records:")
-    click.echo("    1. Mission")
-    click.echo("    2. Engineer")
-    click.echo("    3. Equipment")
-    click.echo("    4. Back")
-    
+    click.echo(click.style("\nCreate new records:", fg="blue", bold=True))
+    click.echo(click.style("    1. Mission", fg="cyan"))
+    click.echo(click.style("    2. Engineer", fg="cyan"))
+    click.echo(click.style("    3. Equipment", fg="cyan"))
+    click.echo(click.style("    4. Back", fg="red"))
+
     while True:
         choice = click.prompt("\nEnter your choice").strip().lower()
         from lib.cli.cli_helpers import create_helper
@@ -33,12 +33,12 @@ def create():
 
 @cli.command()
 def delete():
-    click.echo("\nDelete records:")
-    click.echo("    1. Mission")
-    click.echo("    2. Engineer")
-    click.echo("    3. Equipment")
-    click.echo("    4. Back")
-    
+    click.echo(click.style("\nDelete records:", fg="blue", bold=True))
+    click.echo(click.style("    1. Mission", fg="cyan"))
+    click.echo(click.style("    2. Engineer", fg="cyan"))
+    click.echo(click.style("    3. Equipment", fg="cyan"))
+    click.echo(click.style("    4. Back", fg="red"))
+
     while True:
         choice = click.prompt("\nEnter your choice").strip().lower()
         from lib.cli.cli_helpers import delete_helper
@@ -57,12 +57,12 @@ def delete():
 
 @cli.command()
 def update():
-    click.echo("\nUpdate records:")
-    click.echo("    1. Mission")
-    click.echo("    2. Engineer")
-    click.echo("    3. Equipment")
-    click.echo("    4. Back")
-    
+    click.echo(click.style("\nUpdate records:", fg="blue", bold=True))
+    click.echo(click.style("    1. Mission", fg="cyan"))
+    click.echo(click.style("    2. Engineer", fg="cyan"))
+    click.echo(click.style("    3. Equipment", fg="cyan"))
+    click.echo(click.style("    4. Back", fg="red"))
+
     while True:
         choice = click.prompt("\nEnter your choice").strip().lower()
         from lib.cli.cli_helpers import update_helper
@@ -81,12 +81,12 @@ def update():
 
 @cli.command()
 def view_any_table():
-    click.echo("\nView any table details:")
-    click.echo("    1. Missions")
-    click.echo("    2. Engineers")
-    click.echo("    3. Equipment")
-    click.echo("    4. Engineer-Mission")
-    click.echo("    5. Back")
+    click.echo(click.style("\nView any table details:", fg="blue", bold=True))
+    click.echo(click.style("    1. Missions", fg="cyan"))
+    click.echo(click.style("    2. Engineers", fg="cyan"))
+    click.echo(click.style("    3. Equipment", fg="cyan"))
+    click.echo(click.style("    4. Engineer-Mission", fg="cyan"))
+    click.echo(click.style("    5. Back", fg="red"))
 
     while True:
         choice = click.prompt("\nEnter your choice").strip().lower()
@@ -109,12 +109,12 @@ def view_any_table():
 
 @cli.command()
 def search():
-    click.echo("\nSearch for records:")
-    click.echo("    1. Mission")
-    click.echo("    2. Engineer")
-    click.echo("    3. Equipment")
-    click.echo("    4. Back")
-    
+    click.echo(click.style("\nSearch for records:", fg="blue", bold=True))
+    click.echo(click.style("    1. Mission", fg="cyan"))
+    click.echo(click.style("    2. Engineer", fg="cyan"))
+    click.echo(click.style("    3. Equipment", fg="cyan"))
+    click.echo(click.style("    4. Back", fg="red"))
+
     while True:
         choice = click.prompt("\nEnter your choice").strip().lower()
         from lib.cli.cli_helpers import search_helper
@@ -133,11 +133,11 @@ def search():
 
 @cli.command()
 def view_missions_resources():
-    click.echo("\nView mission resources:")
-    click.echo("    1. Mission Equipment")
-    click.echo("    2. Mission Engineers")
-    click.echo("    3. Back")
-    
+    click.echo(click.style("\nView mission resources:", fg="blue", bold=True))
+    click.echo(click.style("    1. Mission Equipment", fg="cyan"))
+    click.echo(click.style("    2. Mission Engineers", fg="cyan"))
+    click.echo(click.style("    3. Back", fg="red"))
+
     while True:
         choice = click.prompt("\nEnter your choice").strip().lower()
         from lib.cli.cli_helpers import view_mission_resources_helper
@@ -153,11 +153,11 @@ def view_missions_resources():
 
 @cli.command()
 def assign():
-    click.echo("\nAssign resources:")
-    click.echo("    1. Assign Engineer to Mission")
-    click.echo("    2. Assign Equipment to Mission")
-    click.echo("    3. Back")
-    
+    click.echo(click.style("\nAssign resources:", fg="blue", bold=True))
+    click.echo(click.style("    1. Assign Engineer to Mission", fg="cyan"))
+    click.echo(click.style("    2. Assign Equipment to Mission", fg="cyan"))
+    click.echo(click.style("    3. Back", fg="red"))
+
     while True:
         choice = click.prompt("\nEnter your choice").strip().lower()
         from lib.cli.cli_helpers import assign_helper
