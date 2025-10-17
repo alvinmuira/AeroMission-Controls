@@ -89,9 +89,25 @@ def viewanytable():
             view_helper.engineer_mission()
             break
 
-@cli.group()
+@cli.command()
 def search():
-    pass
+    click.echo("Search for records:")
+    click.echo("    1. Mission")
+    click.echo("    2. Engineer")
+    click.echo("    3. Equipment")
+    
+    while True:
+        choice = click.prompt("Enter your choice").strip().lower()
+        from lib.cli.cli_helpers import search_helper
+        if choice == "1" or choice == "mission":
+            search_helper.mission()
+            break
+        elif choice == "2" or choice == "engineer":
+            search_helper.engineer()
+            break
+        elif choice == "3" or choice == "equipment":
+            search_helper.equipment()
+            break
 
 @cli.group()
 def view_missions_resources():
