@@ -7,29 +7,45 @@ def cli():
 
 @cli.command()
 def create():
-    pass
+    click.echo("Create new records:")
+    click.echo("    1. Mission")
+    click.echo("    2. Engineer")
+    click.echo("    3. Equipment")
+    
+    while True:
+        choice = click.prompt("Enter your choice").strip().lower()
+        from lib.cli.cli_helpers import create_helper
+        if choice == "1" or choice == "mission":
+            create_helper.mission()
+            break
+        elif choice == "2" or choice == "engineer":
+            create_helper.engineer()
+            break
+        elif choice == "3" or choice == "equipment":
+            create_helper.equipment()
+            break
 
-@cli.command()
+@cli.group()
 def delete():
     pass
 
-@cli.command()
+@cli.group()
 def update():
     pass
 
-@cli.command()
+@cli.group()
 def view_any_table():
     pass
 
-@cli.command()
+@cli.group()
 def search():
     pass
 
-@cli.command()
+@cli.group()
 def view_missions_resources():
     pass
 
-@cli.command()
+@cli.group()
 def assign():
     pass
 
