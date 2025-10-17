@@ -109,9 +109,21 @@ def search():
             search_helper.equipment()
             break
 
-@cli.group()
-def view_missions_resources():
-    pass
+@cli.command()
+def viewmissionsresources():
+    click.echo("View mission resources:")
+    click.echo("    1. Mission Equipment")
+    click.echo("    2. Mission Engineers")
+    
+    while True:
+        choice = click.prompt("Enter your choice").strip().lower()
+        from lib.cli.cli_helpers import view_mission_resources_helper
+        if choice == "1" or choice == "mission equipment":
+            view_mission_resources_helper.equipment()
+            break
+        elif choice == "2" or choice == "mission engineers":
+            view_mission_resources_helper.engineers()
+            break
 
 @cli.group()
 def assign():

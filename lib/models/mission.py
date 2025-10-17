@@ -105,9 +105,9 @@ class Mission():
         connection.close()
         if results:
             for result in results:
-                print(f"The engineer \"{result[0]}\", specialized in \"{result[1]}\", will serve as \"{result[2]}\" in mission \"{self.name}\".")
+                print(f"\nThe engineer \"{result[0]}\", specialized in \"{result[1]}\", will serve as \"{result[2]}\" in mission \"{self.name}\".")
         else:
-            print(f"The \"{self.name}\" mission has no assigned engineers.")
+            print(f"\nThe \"{self.name}\" mission has no assigned engineers.")
 
     def view_mission_equipment(self):
         connection = get_connection()
@@ -123,9 +123,9 @@ class Mission():
         connection.close()
         if results:
             for result in results:
-                print(f"The \"{result[0]}\" equipment of type \"{result[1]}\", will be used in mission \"{self.name}\".")
+                print(f"\nThe \"{result[0]}\" equipment of type \"{result[1]}\", is in use in mission \"{self.name}\".")
         else:
-            print(f"The \"{self.name}\" mission has no assigned equipment.")
+            print(f"\nThe \"{self.name}\" mission has no assigned equipment.")
 
     @classmethod
     def get_missions_with_status(cls, status):
