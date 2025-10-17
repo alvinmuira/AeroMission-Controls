@@ -180,3 +180,17 @@ class Mission():
         mission = cls(name=name, status=status, launch_date=launch_date)
         mission.save()
         return mission
+
+    @classmethod
+    def update(cls, id, name=None, status=None, launch_date=None):
+        mission = cls.find_by_id(id)
+        if not mission:
+            raise ValueError(f"Mission with ID {id} does not exist.")
+        if name is not None:
+            mission.name = name
+        if status is not None:
+            mission.status = status
+        if launch_date is not None:
+            mission.launch_date = launch_date
+        mission.save()
+        return mission

@@ -45,9 +45,25 @@ def delete():
             delete_helper.equipment()
             break
 
-@cli.group()
+@cli.command()
 def update():
-    pass
+    click.echo("Update records:")
+    click.echo("    1. Mission")
+    click.echo("    2. Engineer")
+    click.echo("    3. Equipment")
+    
+    while True:
+        choice = click.prompt("Enter your choice").strip().lower()
+        from lib.cli.cli_helpers import update_helper
+        if choice == "1" or choice == "mission":
+            update_helper.mission()
+            break
+        elif choice == "2" or choice == "engineer":
+            update_helper.engineer()
+            break
+        elif choice == "3" or choice == "equipment":
+            update_helper.equipment()
+            break
 
 @cli.group()
 def view_any_table():
