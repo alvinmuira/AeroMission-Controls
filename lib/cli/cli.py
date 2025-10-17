@@ -66,7 +66,7 @@ def update():
             break
 
 @cli.command()
-def viewanytable():
+def view_any_table():
     click.echo("View any table details:")
     click.echo("    1. Missions")
     click.echo("    2. Engineers")
@@ -110,7 +110,7 @@ def search():
             break
 
 @cli.command()
-def viewmissionsresources():
+def view_missions_resources():
     click.echo("View mission resources:")
     click.echo("    1. Mission Equipment")
     click.echo("    2. Mission Engineers")
@@ -158,6 +158,27 @@ if __name__ == '__main__':
             "\nEnter function to execute",
             type=str
         ).strip().lower()
+
+        commands = {
+            "create": "create",
+            "delete": "delete",
+            "update": "update",
+            "view any table": "view-any-table",
+            "search": "search",
+            "view missions resources": "view-missions-resources",
+            "assign": "assign",
+            "exit": "exit",
+            "1": "create",
+            "2": "delete",
+            "3": "update",
+            "4": "view-any-table",
+            "5": "search",
+            "6": "view-missions-resources",
+            "7": "assign",
+            "8": "exit"
+        }
+
+        func = commands.get(func, func)
 
         if func == "exit":
             click.echo("Exiting CLI... Goodbye! 👋")
