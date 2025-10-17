@@ -173,7 +173,9 @@ def assign():
 
 if __name__ == '__main__':
     while True:
+        click.echo("\n" + "="*50)
         click.echo("\nWelcome to the 🚀 AeroMission Controls ⚙️ CLI!")
+        click.echo("="*50)
         click.echo("\nAvailable commands:")
         click.echo("    1.Create")
         click.echo("    2.Delete")
