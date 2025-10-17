@@ -62,7 +62,7 @@ class EngineerMission:
                 raise ValueError("Engineer with given ID does not exist.")
             if not mission:
                 raise ValueError("Mission with given ID does not exist.")
-            return cls(engineer=engineer, mission=mission, role=row[3], id=row[0])
+            return cls(Engineer=engineer, Mission=mission, role=row[3], id=row[0])
         return None
 
     def save(self):

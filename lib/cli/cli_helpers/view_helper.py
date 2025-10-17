@@ -40,7 +40,7 @@ def engineer_mission():
     if not engineer_missions:
         click.echo("       ❌ No engineer-mission assignments found.")
         return
-    headers = ["ID", "Engineer ID", "Mission ID", "Engineer Role"]
-    table = [ [em.id, em.engineer_id, em.mission_id, em.role] for em in engineer_missions ]
+    headers = ["ID", "Engineer ID", "Engineer Name", "Mission ID", "Mission Name", "Engineer Role"]
+    table = [ [em.id, em.engineer.id, em.engineer.name, em.mission.id, em.mission.name, em.role] for em in engineer_missions ]
     click.echo("\n       ✅  All Engineer-Mission Assignments:\n")
     click.echo(tabulate(table, headers=headers, tablefmt="fancy_grid"))
