@@ -5,12 +5,15 @@ import sys
 def cli():
     pass
 
+back_choices = ["back", "return", "exit", "quit", "main menu", "menu"]
+
 @cli.command()
 def create():
     click.echo("Create new records:")
     click.echo("    1. Mission")
     click.echo("    2. Engineer")
     click.echo("    3. Equipment")
+    click.echo("    4. Back")
     
     while True:
         choice = click.prompt("Enter your choice").strip().lower()
@@ -24,6 +27,9 @@ def create():
         elif choice == "3" or choice == "equipment":
             create_helper.equipment()
             break
+        elif choice == "4" or choice in back_choices:
+            click.echo("\nReturning to main menu...")
+            break
 
 @cli.command()
 def delete():
@@ -31,6 +37,7 @@ def delete():
     click.echo("    1. Mission")
     click.echo("    2. Engineer")
     click.echo("    3. Equipment")
+    click.echo("    4. Back")
     
     while True:
         choice = click.prompt("Enter your choice").strip().lower()
@@ -44,6 +51,9 @@ def delete():
         elif choice == "3" or choice == "equipment":
             delete_helper.equipment()
             break
+        elif choice == "4" or choice in back_choices:
+            click.echo("\nReturning to main menu...")
+            break
 
 @cli.command()
 def update():
@@ -51,6 +61,7 @@ def update():
     click.echo("    1. Mission")
     click.echo("    2. Engineer")
     click.echo("    3. Equipment")
+    click.echo("    4. Back")
     
     while True:
         choice = click.prompt("Enter your choice").strip().lower()
@@ -64,6 +75,9 @@ def update():
         elif choice == "3" or choice == "equipment":
             update_helper.equipment()
             break
+        elif choice == "4" or choice in back_choices:
+            click.echo("\nReturning to main menu...")
+            break
 
 @cli.command()
 def view_any_table():
@@ -72,6 +86,7 @@ def view_any_table():
     click.echo("    2. Engineers")
     click.echo("    3. Equipment")
     click.echo("    4. Engineer-Mission")
+    click.echo("    5. Back")
 
     while True:
         choice = click.prompt("Enter your choice").strip().lower()
@@ -88,6 +103,9 @@ def view_any_table():
         elif choice == "4" or choice == "engineer-mission":
             view_helper.engineer_mission()
             break
+        elif choice == "5" or choice in back_choices:
+            click.echo("\nReturning to main menu...")
+            break
 
 @cli.command()
 def search():
@@ -95,6 +113,7 @@ def search():
     click.echo("    1. Mission")
     click.echo("    2. Engineer")
     click.echo("    3. Equipment")
+    click.echo("    4. Back")
     
     while True:
         choice = click.prompt("Enter your choice").strip().lower()
@@ -108,12 +127,16 @@ def search():
         elif choice == "3" or choice == "equipment":
             search_helper.equipment()
             break
+        elif choice == "4" or choice in back_choices:
+            click.echo("\nReturning to main menu...")
+            break
 
 @cli.command()
 def view_missions_resources():
     click.echo("View mission resources:")
     click.echo("    1. Mission Equipment")
     click.echo("    2. Mission Engineers")
+    click.echo("    3. Back")
     
     while True:
         choice = click.prompt("Enter your choice").strip().lower()
@@ -124,12 +147,16 @@ def view_missions_resources():
         elif choice == "2" or choice == "mission engineers":
             view_mission_resources_helper.engineers()
             break
+        elif choice == "3" or choice in back_choices:
+            click.echo("\nReturning to main menu...")
+            break
 
 @cli.command()
 def assign():
     click.echo("Assign resources:")
     click.echo("    1. Assign Engineer to Mission")
     click.echo("    2. Assign Equipment to Mission")
+    click.echo("    3. Back")
     
     while True:
         choice = click.prompt("Enter your choice").strip().lower()
@@ -139,6 +166,9 @@ def assign():
             break
         elif choice == "2" or choice == "assign equipment to mission":
             assign_helper.equipment_to_mission()
+            break
+        elif choice == "3" or choice in back_choices:
+            click.echo("\nReturning to main menu...")
             break
 
 if __name__ == '__main__':
@@ -181,7 +211,7 @@ if __name__ == '__main__':
         func = commands.get(func, func)
 
         if func == "exit":
-            click.echo("Exiting CLI... Goodbye! 👋")
+            click.echo("\nExiting CLI... Goodbye! 👋\n")
             break
 
         sys.argv = [sys.argv[0], func]
