@@ -92,3 +92,12 @@ class EngineerMission:
         connection.commit()
         connection.close()
         self.id = None
+
+    @classmethod
+    def get_all_engineer_missions(cls):
+        connection = get_connection()
+        cursor = connection.cursor()
+        cursor.execute("SELECT * FROM engineer_mission")
+        rows = cursor.fetchall()
+        connection.close()
+        return [cls.new_from_db_row(row) for row in rows if row]

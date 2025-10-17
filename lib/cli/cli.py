@@ -71,6 +71,7 @@ def viewanytable():
     click.echo("    1. Missions")
     click.echo("    2. Engineers")
     click.echo("    3. Equipment")
+    click.echo("    4. Engineer-Mission")
 
     while True:
         choice = click.prompt("Enter your choice").strip().lower()
@@ -83,6 +84,9 @@ def viewanytable():
             break
         elif choice == "3" or choice == "equipment":
             view_helper.equipment()
+            break
+        elif choice == "4" or choice == "engineer-mission":
+            view_helper.engineer_mission()
             break
 
 @cli.group()
