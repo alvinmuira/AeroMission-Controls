@@ -1,7 +1,7 @@
 import click
 
 def equipment():
-    value = click.prompt("Enter mission name or id to view")
+    value = click.prompt("\nEnter mission name or id to view")
     from lib.models.mission import Mission
     if value.isdigit():
         mission = Mission.find_by_id(int(value))
@@ -16,7 +16,7 @@ def equipment():
         return
 
 def engineers():
-    value = click.prompt("Enter mission name or id to view")
+    value = click.prompt("\nEnter mission name or id to view")
     from lib.models.mission import Mission
     if value.isdigit():
         mission = Mission.find_by_id(int(value))

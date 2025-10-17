@@ -2,7 +2,7 @@ import click
 from tabulate import tabulate
 
 def mission():
-    choice = click.prompt("Do you want to search a specific mission or view by status?\n (1) Specific Mission\n (2) By Status\n Enter choice", type=str)
+    choice = click.prompt("\nDo you want to search a specific mission or view by status?\n (1) Specific Mission\n (2) By Status\n Enter choice", type=str)
     if choice == "1" or choice == "specific mission":
         _search_specific_mission()
     elif choice == "2" or choice == "by status":
@@ -10,7 +10,7 @@ def mission():
 
 def engineer():
     from lib.models.engineer import Engineer
-    value = click.prompt("Enter engineer name or id to view")
+    value = click.prompt("\nEnter engineer name or id to view")
     if value.isdigit():
         engineer = Engineer.find_by_id(int(value))
     else:
@@ -24,7 +24,7 @@ def engineer():
 
 def equipment():
     from lib.models.equipment import Equipment
-    value = click.prompt("Enter equipment name or id to view")
+    value = click.prompt("\nEnter equipment name or id to view")
     if value.isdigit():
         equipment = Equipment.find_by_id(int(value))
     else:
@@ -38,7 +38,7 @@ def equipment():
 
 def _search_specific_mission():
     from lib.models.mission import Mission
-    value = click.prompt("Enter mission name or id to view")
+    value = click.prompt("\nEnter mission name or id to view")
     if value.isdigit():
         mission = Mission.find_by_id(int(value))
     else:
@@ -52,7 +52,7 @@ def _search_specific_mission():
 
 def _search_by_status():
     from lib.models.mission import Mission
-    status = click.prompt("Enter mission status to filter by (Pending, Ongoing, Completed, Cancelled)", type=str)
+    status = click.prompt("\nEnter mission status to filter by (Pending, Ongoing, Completed, Cancelled)", type=str)
     try:
         missions = Mission.get_missions_with_status(status)
         if not missions:

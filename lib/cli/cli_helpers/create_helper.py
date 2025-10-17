@@ -2,9 +2,9 @@ import click
 
 def mission():
     from lib.models.mission import Mission
-    name = click.prompt("Enter mission name", type=str)
-    status = click.prompt("Enter mission status (Pending, Ongoing, Completed, Cancelled)", type=str)
-    launch_date = click.prompt("Enter mission launch date (YYYY-MM-DD)", type=str)
+    name = click.prompt("\nEnter mission name", type=str)
+    status = click.prompt("\nEnter mission status (Pending, Ongoing, Completed, Cancelled)", type=str)
+    launch_date = click.prompt("\nEnter mission launch date (YYYY-MM-DD)", type=str)
     try:
         mission = Mission.create(name=name, status=status, launch_date=launch_date)
         click.echo(f"       ✅  Creation of {mission.name} mission was successful!")
@@ -13,8 +13,8 @@ def mission():
 
 def engineer():
     from lib.models.engineer import Engineer
-    name = click.prompt("Enter engineer name", type=str)
-    specialization = click.prompt("Enter engineer's specialization", type=str)
+    name = click.prompt("\nEnter engineer name", type=str)
+    specialization = click.prompt("\nEnter engineer's specialization", type=str)
     try:
         engineer = Engineer.create(name=name, specialization=specialization)
         click.echo(f"       ✅  Creation of Eng.{engineer.name} was successful!")
@@ -24,9 +24,9 @@ def engineer():
 def equipment():
     from lib.models.equipment import Equipment
     from lib.models.mission import Mission
-    name = click.prompt("Enter equipment name", type=str)
-    type_ = click.prompt("Enter equipment type", type=str)
-    mission = click.prompt("Enter mission name for this equipment", type=str)
+    name = click.prompt("\nEnter equipment name", type=str)
+    type_ = click.prompt("\nEnter equipment type", type=str)
+    mission = click.prompt("\nEnter mission name for this equipment", type=str)
     try:
         mission = Mission.find_mission_by_name(mission)
         if not mission:

@@ -16,7 +16,7 @@ def create():
     click.echo("    4. Back")
     
     while True:
-        choice = click.prompt("Enter your choice").strip().lower()
+        choice = click.prompt("\nEnter your choice").strip().lower()
         from lib.cli.cli_helpers import create_helper
         if choice == "1" or choice == "mission":
             create_helper.mission()
@@ -40,7 +40,7 @@ def delete():
     click.echo("    4. Back")
     
     while True:
-        choice = click.prompt("Enter your choice").strip().lower()
+        choice = click.prompt("\nEnter your choice").strip().lower()
         from lib.cli.cli_helpers import delete_helper
         if choice == "1" or choice == "mission":
             delete_helper.mission()
@@ -64,7 +64,7 @@ def update():
     click.echo("    4. Back")
     
     while True:
-        choice = click.prompt("Enter your choice").strip().lower()
+        choice = click.prompt("\nEnter your choice").strip().lower()
         from lib.cli.cli_helpers import update_helper
         if choice == "1" or choice == "mission":
             update_helper.mission()
@@ -89,7 +89,7 @@ def view_any_table():
     click.echo("    5. Back")
 
     while True:
-        choice = click.prompt("Enter your choice").strip().lower()
+        choice = click.prompt("\nEnter your choice").strip().lower()
         from lib.cli.cli_helpers import view_helper
         if choice == "1" or choice == "missions":
             view_helper.mission()
@@ -116,7 +116,7 @@ def search():
     click.echo("    4. Back")
     
     while True:
-        choice = click.prompt("Enter your choice").strip().lower()
+        choice = click.prompt("\nEnter your choice").strip().lower()
         from lib.cli.cli_helpers import search_helper
         if choice == "1" or choice == "mission":
             search_helper.mission()
@@ -139,7 +139,7 @@ def view_missions_resources():
     click.echo("    3. Back")
     
     while True:
-        choice = click.prompt("Enter your choice").strip().lower()
+        choice = click.prompt("\nEnter your choice").strip().lower()
         from lib.cli.cli_helpers import view_mission_resources_helper
         if choice == "1" or choice == "mission equipment":
             view_mission_resources_helper.equipment()
@@ -159,7 +159,7 @@ def assign():
     click.echo("    3. Back")
     
     while True:
-        choice = click.prompt("Enter your choice").strip().lower()
+        choice = click.prompt("\nEnter your choice").strip().lower()
         from lib.cli.cli_helpers import assign_helper
         if choice == "1" or choice == "assign engineer to mission":
             assign_helper.engineer_to_mission()

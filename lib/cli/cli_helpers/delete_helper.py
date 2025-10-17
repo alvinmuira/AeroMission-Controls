@@ -2,7 +2,7 @@ import click
 
 def mission():
     from lib.models.mission import Mission
-    value = click.prompt("Enter mission name or id to delete")
+    value = click.prompt("\nEnter mission name or id to delete")
     if value.isdigit():
         mission = Mission.find_by_id(int(value))
     else:
@@ -15,7 +15,7 @@ def mission():
 
 def engineer():
     from lib.models.engineer import Engineer
-    value = click.prompt("Enter engineer name or id to delete")
+    value = click.prompt("\nEnter engineer name or id to delete")
     if value.isdigit():
         engineer = Engineer.find_by_id(int(value))
     else:
@@ -28,7 +28,7 @@ def engineer():
 
 def equipment():
     from lib.models.equipment import Equipment
-    value = click.prompt("Enter equipment name or id to delete")
+    value = click.prompt("\nEnter equipment name or id to delete")
     if value.isdigit():
         equipment = Equipment.find_by_id(int(value))
     else:
