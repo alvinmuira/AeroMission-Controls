@@ -1,18 +1,12 @@
 import click
+from tabulate import tabulate
 
 def mission():
-    from lib.models.mission import Mission
-    value = click.prompt("Enter mission name or id to view")
-    if value.isdigit():
-        mission = Mission.find_by_id(int(value))
-    else:
-        mission = Mission.find_mission_by_name(value)
-    try:
-        if not mission:
-            raise ValueError(f"Mission with name {value} does not exist.")
-        click.echo(f"\n       =>Mission details:\n ID: {mission.id},\n Name: {mission.name},\n Status: {mission.status},\n Launch Date: {mission.launch_date}\n")
-    except ValueError as ve:
-        click.echo(f"       ❌ Error: {ve}")
+    choice = click.prompt("Do you want to search a specific mission or view by status?\n (1) Specific Mission\n (2) By Status\n Enter choice", type=str)
+    if choice == "1" or choice == "specific mission":
+        _search_specific_mission()
+    elif choice == "2" or choice == "by status":
+        _search_by_status()
 
 def engineer():
     from lib.models.engineer import Engineer
@@ -39,5 +33,33 @@ def equipment():
         if not equipment:
             raise ValueError(f"Equipment with name {value} does not exist.")
         click.echo(f"\n       =>Equipment details:\n ID: {equipment.id},\n Name: {equipment.name},\n Type: {equipment.type},\n Mission: {equipment.mission.name}\n")
+    except ValueError as ve:
+        click.echo(f"       ❌ Error: {ve}")
+
+def _search_specific_mission():
+    from lib.models.mission import Mission
+    value = click.prompt("Enter mission name or id to view")
+    if value.isdigit():
+        mission = Mission.find_by_id(int(value))
+    else:
+        mission = Mission.find_mission_by_name(value)
+    try:
+        if not mission:
+            raise ValueError(f"Mission with name {value} does not exist.")
+        click.echo(f"\n       =>Mission details:\n ID: {mission.id},\n Name: {mission.name},\n Status: {mission.status},\n Launch Date: {mission.launch_date}\n")
+    except ValueError as ve:
+        click.echo(f"       ❌ Error: {ve}")
+
+def _search_by_status():
+    from lib.models.mission import Mission
+    status = click.prompt("Enter mission status to filter by (Pending, Ongoing, Completed, Cancelled)", type=str)
+    try:
+        missions = Mission.get_missions_with_status(status)
+        if not missions:
+            raise ValueError(f"No missions found with status {status}.")
+        click.echo(f"\n       =>Missions with status '{status}':\n")
+        headers = ["ID", "Name", "Launch Date"]
+        table = [ [mission.id, mission.name, mission.launch_date] for mission in missions ]
+        click.echo(tabulate(table, headers=headers, tablefmt="fancy_grid"))
     except ValueError as ve:
         click.echo(f"       ❌ Error: {ve}")
