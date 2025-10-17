@@ -125,9 +125,21 @@ def viewmissionsresources():
             view_mission_resources_helper.engineers()
             break
 
-@cli.group()
+@cli.command()
 def assign():
-    pass
+    click.echo("Assign resources:")
+    click.echo("    1. Assign Engineer to Mission")
+    click.echo("    2. Assign Equipment to Mission")
+    
+    while True:
+        choice = click.prompt("Enter your choice").strip().lower()
+        from lib.cli.cli_helpers import assign_helper
+        if choice == "1" or choice == "assign engineer to mission":
+            assign_helper.engineer_to_mission()
+            break
+        elif choice == "2" or choice == "assign equipment to mission":
+            assign_helper.equipment_to_mission()
+            break
 
 if __name__ == '__main__':
     while True:
