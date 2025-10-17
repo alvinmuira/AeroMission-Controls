@@ -1,6 +1,6 @@
 import sqlite3
 
-DB_NAME = 'aeromissions.db'
+DB_NAME = 'database.db'
 
 def get_connection():
     connection = sqlite3.connect(DB_NAME)
@@ -46,7 +46,7 @@ def setup_database():
             name TEXT NOT NULL,
             type TEXT NOT NULL,
             mission_id INTEGER NOT NULL,
-            FOREIGN KEY (mission_id) REFERENCES missions(id)
+            FOREIGN KEY (mission_id) REFERENCES missions(id) ON DELETE CASCADE
         );
     """)
 
