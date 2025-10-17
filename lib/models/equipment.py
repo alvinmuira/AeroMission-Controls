@@ -101,6 +101,7 @@ class Equipment:
 
     @classmethod
     def create(cls, name, type, mission):
+        from lib.models.mission import Mission
         if isinstance(mission, Mission):
             return cls(name=name, type=type, Mission=mission)
         else:
