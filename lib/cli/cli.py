@@ -9,7 +9,7 @@ back_choices = ["back", "return", "exit", "quit", "main menu", "menu"]
 
 @cli.command()
 def create():
-    click.echo("Create new records:")
+    click.echo("\nCreate new records:")
     click.echo("    1. Mission")
     click.echo("    2. Engineer")
     click.echo("    3. Equipment")
@@ -33,7 +33,7 @@ def create():
 
 @cli.command()
 def delete():
-    click.echo("Delete records:")
+    click.echo("\nDelete records:")
     click.echo("    1. Mission")
     click.echo("    2. Engineer")
     click.echo("    3. Equipment")
@@ -57,7 +57,7 @@ def delete():
 
 @cli.command()
 def update():
-    click.echo("Update records:")
+    click.echo("\nUpdate records:")
     click.echo("    1. Mission")
     click.echo("    2. Engineer")
     click.echo("    3. Equipment")
@@ -81,7 +81,7 @@ def update():
 
 @cli.command()
 def view_any_table():
-    click.echo("View any table details:")
+    click.echo("\nView any table details:")
     click.echo("    1. Missions")
     click.echo("    2. Engineers")
     click.echo("    3. Equipment")
@@ -109,7 +109,7 @@ def view_any_table():
 
 @cli.command()
 def search():
-    click.echo("Search for records:")
+    click.echo("\nSearch for records:")
     click.echo("    1. Mission")
     click.echo("    2. Engineer")
     click.echo("    3. Equipment")
@@ -133,7 +133,7 @@ def search():
 
 @cli.command()
 def view_missions_resources():
-    click.echo("View mission resources:")
+    click.echo("\nView mission resources:")
     click.echo("    1. Mission Equipment")
     click.echo("    2. Mission Engineers")
     click.echo("    3. Back")
@@ -153,7 +153,7 @@ def view_missions_resources():
 
 @cli.command()
 def assign():
-    click.echo("Assign resources:")
+    click.echo("\nAssign resources:")
     click.echo("    1. Assign Engineer to Mission")
     click.echo("    2. Assign Equipment to Mission")
     click.echo("    3. Back")
