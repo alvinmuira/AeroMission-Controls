@@ -23,3 +23,21 @@ def engineer_to_mission():
         click.echo(f"       ✅  Assignment of Eng.{engineer.name} to {mission.name} mission as {role} was successful!")
     except ValueError as ve:
         click.echo(f"       ❌ Error: {ve}")
+
+def equipment_to_mission():
+    from lib.models.mission import Mission
+    mission = click.prompt("Enter mission name or id", type=str)
+    if mission.isdigit():
+        mission = Mission.find_by_id(int(mission))
+    else:
+        mission = Mission.find_mission_by_name(mission)
+    if not mission:
+        raise ValueError(f"Mission with name {mission} does not exist.")
+    from lib.models.equipment import Equipment
+    name = click.prompt("Enter equipment name", type=str)
+    type_ = click.prompt("Enter equipment type", type=str)
+    try:
+        equipment = Equipment.create(name=name, type=type_, mission=mission)
+        click.echo(f"       ✅  Creation of {equipment.name} for mission {equipment.mission.name} was successful!")
+    except ValueError as ve:
+        click.echo(f"       ❌ Error: {ve}")
