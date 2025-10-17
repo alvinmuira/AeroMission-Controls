@@ -65,9 +65,25 @@ def update():
             update_helper.equipment()
             break
 
-@cli.group()
-def view_any_table():
-    pass
+@cli.command()
+def viewanytable():
+    click.echo("View any table details:")
+    click.echo("    1. Missions")
+    click.echo("    2. Engineers")
+    click.echo("    3. Equipment")
+
+    while True:
+        choice = click.prompt("Enter your choice").strip().lower()
+        from lib.cli.cli_helpers import view_helper
+        if choice == "1" or choice == "missions":
+            view_helper.mission()
+            break
+        elif choice == "2" or choice == "engineers":
+            view_helper.engineer()
+            break
+        elif choice == "3" or choice == "equipment":
+            view_helper.equipment()
+            break
 
 @cli.group()
 def search():
